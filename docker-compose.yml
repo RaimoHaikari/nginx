@@ -1,0 +1,21 @@
+services:
+  nginx:
+    container_name: poyais
+    build:
+      context: ./nginx/
+    ports:
+      - 80:80
+    networks:
+      - poyais
+    volumes:
+      - ./nginx/html/:/usr/share/nginx/html/
+      - ./nginx/conf.d:/etc/nginx/conf.d/
+
+volumes:
+  # nimi voi olla mitä vaan
+  poyais-db-data: ~
+
+networks:
+  kaneli:
+    driver: bridge
+    name: poyais-shared
